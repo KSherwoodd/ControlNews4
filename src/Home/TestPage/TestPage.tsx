@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+/*
 import {
   IonIcon,
   IonItem,
@@ -7,6 +8,7 @@ import {
   IonListHeader,
   IonMenuToggle,
 } from '@ionic/react';
+*/
 
 const API_KEY = 'afdae3b6eaf54376885b92a07d946d26';
 const url =
@@ -36,7 +38,11 @@ function Test() {
   if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return <ul>{items}</ul>;
+    return (
+      <ul>
+        <li>{items}</li>
+      </ul>
+    );
   }
 }
 

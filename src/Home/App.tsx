@@ -31,6 +31,7 @@ import Feed from './HomePage/HomePage';
 import Profile from './ProfilePage/ProfilePage';
 import Settings from './SettingsPage/SettingsPage';
 import SignIn from './SignInPage/SignInPage';
+import Test from './TestPage/TestPage';
 
 //import Test from './TestPage/TestPage';
 
@@ -101,6 +102,7 @@ const App: React.FunctionComponent = () => {
 
           <Route path="/Profile" component={Profile} exact={true} />
           <Route path="/Settings" component={Settings} exact={true} />
+          <Route path="/test" component={Test} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
