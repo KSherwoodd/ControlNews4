@@ -35,12 +35,18 @@ function Test() {
       });
   }, []);
 
+  console.log(items);
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
     return (
       <ul>
-        <li>{items}</li>
+        {items.map((item) => (
+          <li key={item.id}>
+            {item.width} {item.height}
+          </li>
+        ))}
       </ul>
     );
   }
