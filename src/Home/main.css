@@ -1,0 +1,44 @@
+/* iOS places the subtitle above the title */
+ion-card-header.ios {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+.profile-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  background-color: cadetblue;
+  padding: 10px;
+}
+
+.profile-grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  font-size: 30px;
+}
+
+.profile-grid-container > ion-avatar {
+  justify-self: center;
+  transform: scale(2);
+}
+
+/*
+@keyframes profile-picture-slide {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+.profile-grid-container > ion-avatar:hover {
+  animation-name: profile-picture-slide;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+*/

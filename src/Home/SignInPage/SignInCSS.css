@@ -1,0 +1,21 @@
+ion-button {
+  width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+}
+
+#username-input {
+  width: 40%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#password-input {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2%;
+}
