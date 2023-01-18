@@ -20,7 +20,13 @@ const TEST_URL = 'https://api.thecatapi.com/v1/images/search';
 
 function Test() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([
+    {
+      id: null,
+      width: null,
+      height: null,
+    },
+  ]);
 
   useEffect(() => {
     fetch(TEST_URL, {
