@@ -10,9 +10,8 @@ import {
 } from '@ionic/react';
 */
 
-const API_KEY = 'afdae3b6eaf54376885b92a07d946d26';
-const url =
-  'https://newsapi.org/v2/everything?q=Apple&from=2023-01-17&sortBy=popularity';
+const API_KEY = 'pub_16416277ab8ea1c57ee4eb5dd06a5ff50014a';
+const URL = 'https://newsdata.io/api/1/news?language=en';
 
 const TEST_KEY =
   'live_E0KoUezJfEHyQdjuzEdJaTonDOU9nu5vaC311377pbvynlqSbVj9zsuC1hNSeieL';
@@ -22,16 +21,18 @@ function Test() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([
     {
-      id: null,
-      width: null,
-      height: null,
+      title: null,
+      image_url: '',
+      description: null,
+      source_id: '',
     },
   ]);
 
   useEffect(() => {
-    fetch(TEST_URL, {
+    fetch(URL, {
       headers: {
-        'x-api-key': TEST_KEY,
+        'X-ACCESS-KEY': API_KEY,
+        'Access-Control-Allow-Origin': '*',
       },
     })
       .then((res) => res.json())
@@ -47,13 +48,11 @@ function Test() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            {item.width} {item.height}
-          </li>
-        ))}
-      </ul>
+      <>
+        <h1>{items[0].title}</h1>
+        <p>{items[0].description}</p>
+        <img src={items[0].image_url} alt={items[0].source_id} />
+      </>
     );
   }
 }
