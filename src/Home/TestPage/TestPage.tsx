@@ -34,6 +34,7 @@ function Test() {
         'X-ACCESS-KEY': API_KEY,
         'Access-Control-Allow-Origin': '*',
       },
+      mode: 'no-cors',
     })
       .then((res) => res.json())
       .then((result) => {
