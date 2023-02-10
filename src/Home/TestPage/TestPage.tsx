@@ -63,23 +63,24 @@ function Test() {
         setIsLoaded(true);
         setItem(result);
       });
+    for (let x = 0; x < 20; x++) {
+      newArticles.push(
+        <>
+          <IonCardHeader>
+            <IonCardTitle>{item.results[0].title}</IonCardTitle>
+            <IonCardSubtitle>{item.results[0].description}</IonCardSubtitle>
+          </IonCardHeader>
 
-    newArticles.push(
-      <>
-        <IonCardHeader>
-          <IonCardTitle>{item.results[0].title}</IonCardTitle>
-          <IonCardSubtitle>{item.results[0].description}</IonCardSubtitle>
-        </IonCardHeader>
-
-        <IonCardContent>
-          <IonImg
-            src={item.results[0].image_url}
-            alt={item.results[0].source_id}
-          />
-        </IonCardContent>
-      </>
-    );
-    setArticles([...articles, ...newArticles]);
+          <IonCardContent>
+            <IonImg
+              src={item.results[0].image_url}
+              alt={item.results[0].source_id}
+            />
+          </IonCardContent>
+        </>
+      );
+      setArticles([...articles, ...newArticles]);
+    }
   };
 
   useEffect(() => {
