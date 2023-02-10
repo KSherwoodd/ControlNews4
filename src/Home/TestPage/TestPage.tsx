@@ -55,29 +55,31 @@ function Test() {
   });
   const [articles, setArticles] = useState<JSX.Element[]>([]);
 
-const generateItems = () => {
+  const generateItems = () => {
     const newArticles = [];
     fetch(URL)
-    .then((res) => res.json())
-    .then((result) => {
-      setIsLoaded(true);
-      setItem(result);
-    });
+      .then((res) => res.json())
+      .then((result) => {
+        setIsLoaded(true);
+        setItem(result);
+      });
 
     newArticles.push(
       <>
         <IonCardHeader>
-          <IonCardTitle>{}</IonCardTitle>
-          <IonCardSubtitle>{}</IonCardSubtitle>
+          <IonCardTitle>{item.results[0].title}</IonCardTitle>
+          <IonCardSubtitle>{item.results[0].description}</IonCardSubtitle>
         </IonCardHeader>
 
         <IonCardContent>
-          <IonImg src={} alt={} />
+          <IonImg
+            src={item.results[0].image_url}
+            alt={item.results[0].source_id}
+          />
         </IonCardContent>
       </>
     );
     setArticles([...articles, ...newArticles]);
-  }
   };
 
   useEffect(() => {
