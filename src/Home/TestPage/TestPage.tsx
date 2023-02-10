@@ -63,7 +63,8 @@ function Test() {
         setIsLoaded(true);
         setItem(result);
       });
-    for (let x = 0; x < 20; x++) {
+
+    for (var x = 0; x < 20; x++) {
       newArticles.push(
         <>
           <IonCardHeader>
@@ -79,8 +80,8 @@ function Test() {
           </IonCardContent>
         </>
       );
+      setArticles([...articles, ...newArticles]);
     }
-    setArticles([...articles, ...newArticles]);
   };
 
   useEffect(() => {
