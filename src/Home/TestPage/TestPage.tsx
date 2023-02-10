@@ -1,3 +1,15 @@
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonContent,
+  IonImg,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonList,
+} from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 /*
 import {
@@ -18,7 +30,7 @@ const TEST_KEY =
   'live_E0KoUezJfEHyQdjuzEdJaTonDOU9nu5vaC311377pbvynlqSbVj9zsuC1hNSeieL';
 const TEST_URL = 'https://api.thecatapi.com/v1/images/search';
 
-class Response extends React.Component {
+/*class Response extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -26,7 +38,7 @@ class Response extends React.Component {
       results: [],
     };
   }
-}
+}*/
 
 function Test() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,24 +53,36 @@ function Test() {
       },
     ],
   });
+  const [articles, setArticles] = useState<JSX.Element[]>([]);
 
-  /*
-  , {
-      headers: {
-        'X-ACCESS-KEY': API_KEY,
-      },
-  */
+const generateItems = () => {
+    const newArticles = [];
+    fetch(URL)
+    .then((res) => res.json())
+    .then((result) => {
+      setIsLoaded(true);
+      setItem(result);
+    });
+
+    newArticles.push(
+      <>
+        <IonCardHeader>
+          <IonCardTitle>{}</IonCardTitle>
+          <IonCardSubtitle>{}</IonCardSubtitle>
+        </IonCardHeader>
+
+        <IonCardContent>
+          <IonImg src={} alt={} />
+        </IonCardContent>
+      </>
+    );
+    setArticles([...articles, ...newArticles]);
+  }
+  };
 
   useEffect(() => {
-    fetch(URL)
-      .then((res) => res.json())
-      .then((result) => {
-        setIsLoaded(true);
-        setItem(result);
-      });
+    generateItems();
   }, []);
-
-  console.log(item);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -66,11 +90,21 @@ function Test() {
     return <h3>An error occured when processing your request.</h3>;
   } else {
     return (
-      <>
-        <h1>{item.results[0].title}</h1>
-        <p>{item.results[0].description}</p>
-        <img src={item.results[0].image_url} alt={item.results[0].source_id} />
-      </>
+      <IonContent>
+        <IonList>
+          {articles.map((article, index) => (
+            <IonCard>{article}</IonCard>
+          ))}
+        </IonList>
+        <IonInfiniteScroll
+          onIonInfinite={(event) => {
+            generateItems();
+            setTimeout(() => event.target.complete(), 500);
+          }}
+        >
+          <IonInfiniteScrollContent loadingSpinner="bubbles" />
+        </IonInfiniteScroll>
+      </IonContent>
     );
   }
 }
@@ -90,3 +124,18 @@ export default Test;
 //https://reactjs.org/docs/faq-ajax.html
 //https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers
 //https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t
+
+/*
+  , {
+      headers: {
+        'X-ACCESS-KEY': API_KEY,
+      },
+  */
+
+/*
+      <>
+        <h1>{item.results[0].title}</h1>
+        <p>{item.results[0].description}</p>
+        <img src={item.results[0].image_url} alt={item.results[0].source_id} />
+      </>
+*/
