@@ -64,7 +64,10 @@ function Test() {
         setItem(result);
       });
 
-    for (var x = 0; x < 20; x++) {
+    console.log('API return: ');
+    console.log(item);
+
+    for (let x = 0; x < 20; x++) {
       newArticles.push(
         <>
           <IonCardHeader>
@@ -93,11 +96,15 @@ function Test() {
   } else if (item.status !== 'success') {
     return <h3>An error occured when processing your request.</h3>;
   } else {
+    console.log(item);
+    console.log(articles);
     return (
       <IonContent>
         <IonList>
           {articles.map((article, index) => (
-            <IonCard>{article}</IonCard>
+            <li key={index}>
+              <IonCard>{article}</IonCard>
+            </li>
           ))}
         </IonList>
         <IonInfiniteScroll
