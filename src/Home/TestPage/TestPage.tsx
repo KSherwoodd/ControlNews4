@@ -57,6 +57,7 @@ function Test() {
 
   const generateItems = () => {
     const newArticles = [];
+
     fetch(URL)
       .then((res) => res.json())
       .then((result) => {
@@ -71,14 +72,14 @@ function Test() {
       newArticles.push(
         <>
           <IonCardHeader>
-            <IonCardTitle>{item.results[x].title}</IonCardTitle>
-            <IonCardSubtitle>{item.results[x].description}</IonCardSubtitle>
+            <IonCardTitle>{item.results[0].title}</IonCardTitle>
+            <IonCardSubtitle>{item.results[0].description}</IonCardSubtitle>
           </IonCardHeader>
 
           <IonCardContent>
             <IonImg
-              src={item.results[x].image_url}
-              alt={item.results[x].source_id}
+              src={item.results[0].image_url}
+              alt={item.results[0].source_id}
             />
           </IonCardContent>
         </>
