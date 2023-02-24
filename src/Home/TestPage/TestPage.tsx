@@ -162,6 +162,8 @@ export default Test;
 //https://reactjs.org/docs/faq-ajax.html
 //https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers
 //https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t
+//
+//https://app.newscatcherapi.com/dashboard/
 
 /*
   , {
