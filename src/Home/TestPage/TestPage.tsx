@@ -22,9 +22,8 @@ import {
 } from '@ionic/react';
 */
 
-const API_KEY = 'pub_16416277ab8ea1c57ee4eb5dd06a5ff50014a';
-const URL =
-  'https://newsdata.io/api/1/news?apiKey=pub_16416277ab8ea1c57ee4eb5dd06a5ff50014a&language=en';
+const API_KEY = 'oqzL2SHzWCS1XxwXs-J87zvBCU8be3wJ0COmGajmmxk';
+const URL = 'https://api.newscatcherapi.com/v2/search?q=Elon%20Musk&lang=en';
 
 const TEST_KEY =
   'live_E0KoUezJfEHyQdjuzEdJaTonDOU9nu5vaC311377pbvynlqSbVj9zsuC1hNSeieL';
@@ -44,12 +43,36 @@ function Test() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [item, setItem] = useState({
     status: null,
-    results: [
+    articles: [
       {
         title: null,
-        image_url: '',
-        description: null,
-        source_id: '',
+        media: '',
+        excerpt: null,
+        link: '',
+      },
+      {
+        title: null,
+        media: '',
+        excerpt: null,
+        link: '',
+      },
+      {
+        title: null,
+        media: '',
+        excerpt: null,
+        link: '',
+      },
+      {
+        title: null,
+        media: '',
+        excerpt: null,
+        link: '',
+      },
+      {
+        title: null,
+        media: '',
+        excerpt: null,
+        link: '',
       },
     ],
   });
@@ -58,7 +81,9 @@ function Test() {
   const generateItems = () => {
     const newArticles = [];
 
-    fetch(URL)
+    fetch(URL, {
+      headers: { 'x-api-key': API_KEY },
+    })
       .then((res) => res.json())
       .then((result) => {
         setIsLoaded(true);
@@ -68,19 +93,16 @@ function Test() {
     console.log('API return: ');
     console.log(item);
 
-    for (let x = 0; x < 20; x++) {
+    for (let x = 0; x < 5; x++) {
       newArticles.push(
         <>
           <IonCardHeader>
-            <IonCardTitle>{item.results[0].title}</IonCardTitle>
-            <IonCardSubtitle>{item.results[0].description}</IonCardSubtitle>
+            <IonCardTitle>{item.articles[x].title}</IonCardTitle>
+            <IonCardSubtitle>{item.articles[x].excerpt}</IonCardSubtitle>
           </IonCardHeader>
 
           <IonCardContent>
-            <IonImg
-              src={item.results[0].image_url}
-              alt={item.results[0].source_id}
-            />
+            <IonImg src={item.articles[x].media} alt={item.articles[x].link} />
           </IonCardContent>
         </>
       );
@@ -89,12 +111,16 @@ function Test() {
   };
 
   useEffect(() => {
-    generateItems();
+    //generateItems();
+    const genItems = setTimeout(() => {
+      generateItems();
+    }, 2000);
+    return () => clearTimeout(genItems);
   }, []);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
-  } else if (item.status !== 'success') {
+  } else if (item.status !== 'ok') {
     return <h3>An error occured when processing your request.</h3>;
   } else {
     console.log(item);
