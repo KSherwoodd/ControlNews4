@@ -90,9 +90,6 @@ function Test() {
         setItem(result);
       });
 
-    console.log('API return: ');
-    console.log(item);
-
     for (let x = 0; x < 5; x++) {
       newArticles.push(
         <>
@@ -123,8 +120,6 @@ function Test() {
   } else if (item.status !== 'ok') {
     return <h3>An error occured when processing your request.</h3>;
   } else {
-    console.log(item);
-    console.log(articles);
     return (
       <IonContent>
         <IonList>
